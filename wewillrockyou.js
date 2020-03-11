@@ -61,7 +61,10 @@ $( document ).ready(function() {
     play.show();
   });
 
-  $( document ).updateAppMessageShareData({
+});
+
+wx.ready(function () {   // This must be called before the user potentially taps the **Share** button.
+  wx.updateAppMessageShareData({
     title: 'We Will Rock You on WeChat', // The sharing title
     desc: 'Test de pifi pour wechat', // The sharing description
     link: 'https://pifi.netlify.com', // The sharing link whose domain name or path must be consistent with the JS secure domain name of the Official Account corresponding to the current page.
