@@ -20,8 +20,8 @@ $( document ).ready(function() {
       elapsed_time = parseInt(elapsed_time);
       if((elapsed_time >= time) && (time > line)){
         $(this).css({
-          'font-size':'2rem',
-          'line-height':'2rem',
+          'font-size':'1.5rem',
+          'line-height':'1.5rem',
           'z-index':'10',
           'color':'#000'
         });
@@ -61,4 +61,17 @@ $( document ).ready(function() {
     play.show();
   });
 
+});
+
+wx.ready(function () {   // This must be called before the user potentially taps the **Share** button.
+  wx.updateAppMessageShareData({
+    title: 'We Will Rock You on WeChat', // The sharing title
+    desc: 'Test de pifi pour wechat', // The sharing description
+    link: 'https://pifi.netlify.com', // The sharing link whose domain name or path must be consistent with the JS secure domain name of the Official Account corresponding to the current page.
+    imgUrl: '', // The sharing icon
+    success: function () {
+      // Indicates that the configuration is successful.
+      console.log('partage success');
+    }
+  })
 });
