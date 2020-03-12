@@ -10,9 +10,7 @@ pipeline {
             steps {
                 script {
                     def currentDate = new Date().format( 'yyyyMMddHms' );
-                    timestamp = new Date().format( 'yyyyMMdd-Hms' )
                     writeFile encoding: 'UTF-8', file: 'fileToArchive.js', text: "Need to be archived $currentDate"
-                    sh """ls -l"""
                 }
             }
         }
