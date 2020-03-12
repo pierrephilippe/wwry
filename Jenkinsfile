@@ -6,6 +6,11 @@ pipeline {
                 echo "Hello World!"
             }
         }
+        stage('Build Artefact') {
+            steps {
+                sh """ date >> artifact.txt """
+            }
+        }
         stage('Archivage') {
             steps {
                 archiveArtifacts 'helloworld.txt'
@@ -15,6 +20,7 @@ pipeline {
     post {
         always {
             cleanWs()
+             archiveArtifacts 'helloworld.txt'
         }
     }
 }
