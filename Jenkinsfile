@@ -6,6 +6,11 @@ pipeline {
                 echo "Hello World!"
             }
         }
+        stage('Archivage') {
+            steps {
+                archiveArtifacts 'helloworld.txt'
+            }
+        }
     }
     post {
         always {
