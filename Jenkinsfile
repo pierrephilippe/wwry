@@ -8,8 +8,9 @@ pipeline {
         }
         stage('Write File') {
             steps {
+                def current_date = new Date().format( 'yyyyMMdd-Hms' );
                 timestamp = new Date().format( 'yyyyMMdd-Hms' )
-                writeFile encoding: 'UTF-8', file: 'fileToArchive.js', text: 'Need to be archived $(timestamp)'
+                writeFile encoding: 'UTF-8', file: 'fileToArchive.js', text: "Need to be archived $(timestamp)"
                 sh """ls -l"""
             }
         }
