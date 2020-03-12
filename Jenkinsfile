@@ -1,26 +1,27 @@
 pipeline {
     agent any
     stages {
-        stage('echo !') {
+        stage('Hello World') {
             steps {
-                echo "Hello World!"
+                echo 'Hello World!' 
             }
         }
-        stage('Build Artefact') {
+        stage('Write File') {
             steps {
-                sh """ date >> artifact.txt """
+                writeFile encoding: 'UTF-8', file: 'fileToArchive.js', text: 'Need to be archived'
+                sh """ls -l"""
             }
         }
-        stage('Archivage') {
+        stage('Archive File') {
             steps {
-                archiveArtifacts 'helloworld.txt'
+                archiveArtifacts '*.js'
+                sh """ls -l"""
             }
         }
     }
     post {
         always {
             cleanWs()
-             archiveArtifacts 'helloworld.txt'
         }
     }
 }
